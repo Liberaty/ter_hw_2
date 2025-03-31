@@ -1,24 +1,24 @@
 resource "yandex_vpc_network" "develop" {
   name = var.vpc_name
 }
-resource "yandex_vpc_subnet" "develop-a" {
+resource "yandex_vpc_subnet" "develop" {
   name           = local.subnet_name_develop_a
   zone           = var.default_zone[0]
   network_id     = yandex_vpc_network.develop.id
-  v4_cidr_blocks = var.default_cidr[0]
+  v4_cidr_blocks = var.default_cidr_a
 }
 
-resource "yandex_vpc_subnet" "develop-b" {
+resource "yandex_vpc_subnet" "develop-db" {
   name           = local.subnet_name_develop_b
   zone           = var.default_zone[1]
   network_id     = yandex_vpc_network.develop.id
-  v4_cidr_blocks = var.default_cidr[1]
+  v4_cidr_blocks = var.default_cidr_b
 }
 
 data "yandex_compute_image" "ubuntu" {
   family = var.vm_web_image_name
 }
-resource "yandex_compute_instance" "platform-web" {
+resource "yandex_compute_instance" "platform" {
   name        = var.vm_web_name
   platform_id = var.vm_web_platform
   resources {
@@ -35,7 +35,7 @@ resource "yandex_compute_instance" "platform-web" {
     preemptible = true
   }
   network_interface {
-    subnet_id = yandex_vpc_subnet.develop-a.id
+    subnet_id = yandex_vpc_subnet.develop.id
     nat       = true
   }
 
@@ -46,8 +46,9 @@ resource "yandex_compute_instance" "platform-web" {
 
 }
 
-resource "yandex_compute_instance" "platform-db" {
+resource "yandex_compute_instance" "vm-db" {
   name        = var.vm_db_name
+  hostname    = var.vm_db_name
   platform_id = var.vm_db_platform
   resources {
     cores         = var.vm_db_core
@@ -63,7 +64,7 @@ resource "yandex_compute_instance" "platform-db" {
     preemptible = true
   }
   network_interface {
-    subnet_id = yandex_vpc_subnet.develop-b.id
+    subnet_id = yandex_vpc_subnet.develop-db.id
     nat       = true
   }
 
