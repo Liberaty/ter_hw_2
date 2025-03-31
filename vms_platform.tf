@@ -1,3 +1,27 @@
+###Network variables
+
+variable "zone_prefix_a" {
+  type = string
+  default = "a"
+}
+
+variable "zone_prefix_b" {
+  type = string
+  default = "b"
+}
+
+variable "default_cidr" {
+  type        = list(string)
+  default     = ["10.0.1.0/24", "10.0.2.0/24"]
+  description = "https://cloud.yandex.ru/docs/vpc/operations/subnet-create"
+}
+
+variable "vpc_name" {
+  type        = string
+  default     = ["develop"]
+  description = "VPC network & subnet name"
+}
+
 ###vms vars for web
 
 variable "vm_web_image_name" {
