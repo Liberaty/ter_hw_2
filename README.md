@@ -63,7 +63,7 @@
 2. Скопируйте блок ресурса и создайте с его помощью вторую ВМ в файле main.tf: **"netology-develop-platform-db"** ,  ```cores  = 2, memory = 2, core_fraction = 20```. Объявите её переменные с префиксом **vm_db_** в том же файле ('vms_platform.tf').  ВМ должна работать в зоне "ru-central1-b" \
 ***Ответ:*** Подтверждение по [ссылке](https://github.com/Liberaty/ter_hw_2/blob/main/another-code/task-2-terraform-apply.txt)
 3. Примените изменения.
-
+![3.1.png](https://github.com/Liberaty/ter_hw_2/blob/main/img/3.1.png?raw=true)
 
 ### Задание 4
 
