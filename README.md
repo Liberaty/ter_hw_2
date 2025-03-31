@@ -50,16 +50,18 @@
 
 1. Замените все хардкод-**значения** для ресурсов **yandex_compute_image** и **yandex_compute_instance** на **отдельные** переменные. К названиям переменных ВМ добавьте в начало префикс **vm_web_** .  Пример: **vm_web_name**. \
 ![2.1.png](https://github.com/Liberaty/ter_hw_2/blob/main/img/2.1.png?raw=true)
-2. Объявите нужные переменные в файле variables.tf, обязательно указывайте тип переменной. Заполните их **default** прежними значениями из main.tf. 
+2. Объявите нужные переменные в файле variables.tf, обязательно указывайте тип переменной. Заполните их **default** прежними значениями из main.tf.  \
 ![2.2.png](https://github.com/Liberaty/ter_hw_2/blob/main/img/2.2.png?raw=true)
-3. Проверьте terraform plan. Изменений быть не должно.
+3. Проверьте terraform plan. Изменений быть не должно. \
 ![2.3.png](https://github.com/Liberaty/ter_hw_2/blob/main/img/2.3.png?raw=true)
 
 
 ### Задание 3
 
-1. Создайте в корне проекта файл 'vms_platform.tf' . Перенесите в него все переменные первой ВМ.
-2. Скопируйте блок ресурса и создайте с его помощью вторую ВМ в файле main.tf: **"netology-develop-platform-db"** ,  ```cores  = 2, memory = 2, core_fraction = 20```. Объявите её переменные с префиксом **vm_db_** в том же файле ('vms_platform.tf').  ВМ должна работать в зоне "ru-central1-b"
+1. Создайте в корне проекта файл 'vms_platform.tf' . Перенесите в него все переменные первой ВМ. \
+***Ответ:*** Сделано, можно увидеть по [ссылке](https://github.com/Liberaty/ter_hw_2/blob/main/vms_platform.tf)
+2. Скопируйте блок ресурса и создайте с его помощью вторую ВМ в файле main.tf: **"netology-develop-platform-db"** ,  ```cores  = 2, memory = 2, core_fraction = 20```. Объявите её переменные с префиксом **vm_db_** в том же файле ('vms_platform.tf').  ВМ должна работать в зоне "ru-central1-b" \
+***Ответ:*** Подтверждение по [ссылке](https://github.com/Liberaty/ter_hw_2/blob/main/another-code/task-2-terraform-apply.txt)
 3. Примените изменения.
 
 
