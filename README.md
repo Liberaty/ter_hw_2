@@ -69,9 +69,10 @@
 
 1. Объявите в файле outputs.tf **один** output , содержащий: instance_name, external_ip, fqdn для каждой из ВМ в удобном лично для вас формате.(без хардкода!!!)
 2. Примените изменения.
+***Ответ:*** Готово, вот [ссылка](https://github.com/Liberaty/ter_hw_2/blob/main/outputs.tf) на файл
 
 В качестве решения приложите вывод значений ip-адресов команды ```terraform output```.
-
+![4.1.png](https://github.com/Liberaty/ter_hw_2/blob/main/img/4.1.png?raw=true)
 
 ### Задание 5
 
