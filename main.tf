@@ -50,6 +50,7 @@ resource "yandex_compute_instance" "vm-db" {
   name        = var.vm_db_name
   hostname    = var.vm_db_name
   platform_id = var.vm_db_platform
+  zone        = var.default_zone[1]
   resources {
     cores         = var.vm_db_core
     memory        = var.vm_db_memory
