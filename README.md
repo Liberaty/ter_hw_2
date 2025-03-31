@@ -49,11 +49,11 @@
 ### Задание 2
 
 1. Замените все хардкод-**значения** для ресурсов **yandex_compute_image** и **yandex_compute_instance** на **отдельные** переменные. К названиям переменных ВМ добавьте в начало префикс **vm_web_** .  Пример: **vm_web_name**. \
-***Ответ:*** 
 ![2.1.png](https://github.com/Liberaty/ter_hw_2/blob/main/img/2.1.png?raw=true)
 2. Объявите нужные переменные в файле variables.tf, обязательно указывайте тип переменной. Заполните их **default** прежними значениями из main.tf. 
-
-3. Проверьте terraform plan. Изменений быть не должно. 
+![2.2.png](https://github.com/Liberaty/ter_hw_2/blob/main/img/2.2.png?raw=true)
+3. Проверьте terraform plan. Изменений быть не должно.
+![2.3.png](https://github.com/Liberaty/ter_hw_2/blob/main/img/2.3.png?raw=true)
 
 
 ### Задание 3
