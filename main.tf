@@ -1,6 +1,7 @@
 resource "yandex_vpc_network" "develop" {
   name = var.vpc_name
 }
+
 resource "yandex_vpc_subnet" "develop" {
   name           = local.subnet_name_develop_a
   zone           = var.default_zone[0]
@@ -16,19 +17,24 @@ resource "yandex_vpc_subnet" "develop-db" {
 }
 
 data "yandex_compute_image" "ubuntu" {
-  family = var.vm_web_image_name
+  family = var.vm_image_name
 }
-resource "yandex_compute_instance" "platform" {
-  name        = var.vm_web_name
-  platform_id = var.vm_web_platform
+
+resource "yandex_compute_instance" "vm-web" {
+  name        = local.vm_web_name
+  hostname    = local.vm_web_name
+  platform_id = var.vms_config[0].platform_id
+  zone        = var.default_zone[0]
   resources {
-    cores         = var.vm_web_core
-    memory        = var.vm_web_memory
-    core_fraction = var.vm_web_fraction
+    cores         = var.vms_config[0].cores
+    memory        = var.vms_config[0].memory
+    core_fraction = var.vms_config[0].core_fraction
   }
   boot_disk {
     initialize_params {
       image_id = data.yandex_compute_image.ubuntu.image_id
+      size     = var.vms_config[0].hdd_size
+      type     = var.vms_config[0].hdd_type
     }
   }
   scheduling_policy {
@@ -47,18 +53,20 @@ resource "yandex_compute_instance" "platform" {
 }
 
 resource "yandex_compute_instance" "vm-db" {
-  name        = var.vm_db_name
-  hostname    = var.vm_db_name
-  platform_id = var.vm_db_platform
+  name        = local.vm_db_name
+  hostname    = local.vm_db_name
+  platform_id = var.vms_config[1].platform_id
   zone        = var.default_zone[1]
   resources {
-    cores         = var.vm_db_core
-    memory        = var.vm_db_memory
-    core_fraction = var.vm_db_fraction
+    cores         = var.vms_config[1].cores
+    memory        = var.vms_config[1].memory
+    core_fraction = var.vms_config[1].core_fraction
   }
   boot_disk {
     initialize_params {
       image_id = data.yandex_compute_image.ubuntu.image_id
+      size     = var.vms_config[1].hdd_size
+      type     = var.vms_config[1].hdd_type
     }
   }
   scheduling_policy {
